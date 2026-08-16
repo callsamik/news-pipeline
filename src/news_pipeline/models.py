@@ -52,3 +52,11 @@ class NewsItem:
     raw_text: str = ""
     summary: str = ""
     language: str = "en"
+
+
+@dataclass(frozen=True)
+class PipelineRunResult:
+    started_at: datetime
+    completed_at: datetime
+    source_results: list[SourceFetchResult]
+    items: list[NewsItem]
