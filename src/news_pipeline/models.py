@@ -18,6 +18,12 @@ class NewsSource:
     credential_env: str = ""
     options: dict[str, Any] | None = None
 
+    def option(self, name: str, default: Any = None) -> Any:
+        """Return a parser/transport option from ``options``, or ``default``."""
+        if not self.options:
+            return default
+        return self.options.get(name, default)
+
 
 @dataclass(frozen=True)
 class NewsItem:
