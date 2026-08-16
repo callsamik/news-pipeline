@@ -26,6 +26,22 @@ class NewsSource:
 
 
 @dataclass(frozen=True)
+class RawFetch:
+    source_id: str
+    ok: bool
+    body: str | None
+    error: str | None
+
+
+@dataclass(frozen=True)
+class SourceFetchResult:
+    source_id: str
+    ok: bool
+    item_count: int = 0
+    error: str | None = None
+
+
+@dataclass(frozen=True)
 class NewsItem:
     id: str
     source_id: str
