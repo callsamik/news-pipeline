@@ -1,0 +1,140 @@
+{
+  "corpus_id": "np_llm_summarize_1_v1",
+  "experiment": "OV-NP-LLM-SUMMARIZE-1",
+  "frozen_at_utc": "2026-09-21T14:53:05.982785+00:00",
+  "n": 10,
+  "sources": [
+    "moneycontrol_top",
+    "worldbank_news",
+    "reuters_top"
+  ],
+  "note": "Live-fetched residual Google-News-proxy feeds at freeze time. text = news_pipeline parse raw_text (feed description/content as available). AIN store clears raw_text so store replay cannot supply bodies. Not title-only PROBE-1 corpus.",
+  "body_chars": {
+    "min": 499,
+    "max": 1100,
+    "sum": 7471,
+    "mean": 747.1
+  },
+  "fetch_notes": [
+    {
+      "source_id": "moneycontrol_top",
+      "ok": true,
+      "item_count": 100,
+      "error": null
+    },
+    {
+      "source_id": "worldbank_news",
+      "ok": true,
+      "item_count": 100,
+      "error": null
+    },
+    {
+      "source_id": "reuters_top",
+      "ok": true,
+      "item_count": 100,
+      "error": null
+    }
+  ],
+  "items": [
+    {
+      "news_id": "news_ac772ecf964b8e8f",
+      "source_id": "moneycontrol_top",
+      "url": "https://news.google.com/rss/articles/CBMivAJBVV95cUxPYVd3UTRVbFJIYUh2YTVGRDlZMGFPVGV3OE52UUZ0Y0JqNnd2clZjcm1zMFRvbUphdW9NZUFNYV9zdE4yc1dHX0lWWVlEelUtSmFRNy1LWVNZVDk1blJpWGNaRGZuOEVFcy02X1RDN1loYVR4S08tM2dkelpCNmF6NjI5QWJtQ1M3dDdVcTM5dlJCc1drVTRscV9fNEdyeUpRSDI5Z0VFSnlkVklGdnptUnI4RW9Va1RWdGpKb2VHTFdEVURWZU5EV0hDQzNGejF6RWN2SVVoVndQVFJEMUk4UW1fVERTRGwzWEE0dk9mZm5mUlNydkNJT29acEpNdWJSaS1rRXpJSUZrdl9Qb1kwbVpjLWEzbFdYMXVobEhTdW8wMXhLREE0TzhhNzRJZGk5OTEycVRwZXZ1RV840gHCAkFVX3lxTE5PN0xKeE5jU29EWkpHR3laS29TV1pSVW5CNURVaGJMbC1QUzZjOXFSSnRmeFVKSmFVMFFUWnZLOFZONWRQUVZna05QTzhvS3Q4bGo5VHF6a2VpUmxhRmdET3AtVW9lOUozc01KUVZOMHM5elVxaWxibTZURGFpajF1dUFhcGJ3Z0JXRExHU2RTQXBnbWMxbkd5R05nQWFvV04talJZWlNtQ1VFM0pVMVNHS1NlWmFzcmMtaFM5ei1JaWxXUzMtaGxLQjliUjRZV0MtczRSV1BvYXFuWlh2WWVobUNmNDJpOXBkeGVwSHBjMHZwSkdSalNNTHhGQ2sxVFhHTkd5VnExMmFPVVhiRC1zNnYzNlliam96dzBreFd1VUdGby1YOXFXLTY2S0tUV3NsYXAzb21MSjVuVXUyTF90SkE?oc=5",
+      "title": "Stocks to Watch Today: Lenskart, Rail Vikas Nigam, GR Infraprojects, Knowledge Marine, HEG, Nibe, Manika... - Moneycontrol.com",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMivAJBVV95cUxPYVd3UTRVbFJIYUh2YTVGRDlZMGFPVGV3OE52UUZ0Y0JqNnd2clZjcm1zMFRvbUphdW9NZUFNYV9zdE4yc1dHX0lWWVlEelUtSmFRNy1LWVNZVDk1blJpWGNaRGZuOEVFcy02X1RDN1loYVR4S08tM2dkelpCNmF6NjI5QWJtQ1M3dDdVcTM5dlJCc1drVTRscV9fNEdyeUpRSDI5Z0VFSnlkVklGdnptUnI4RW9Va1RWdGpKb2VHTFdEVURWZU5EV0hDQzNGejF6RWN2SVVoVndQVFJEMUk4UW1fVERTRGwzWEE0dk9mZm5mUlNydkNJT29acEpNdWJSaS1rRXpJSUZrdl9Qb1kwbVpjLWEzbFdYMXVobEhTdW8wMXhLREE0TzhhNzRJZGk5OTEycVRwZXZ1RV840gHCAkFVX3lxTE5PN0xKeE5jU29EWkpHR3laS29TV1pSVW5CNURVaGJMbC1QUzZjOXFSSnRmeFVKSmFVMFFUWnZLOFZONWRQUVZna05QTzhvS3Q4bGo5VHF6a2VpUmxhRmdET3AtVW9lOUozc01KUVZOMHM5elVxaWxibTZURGFpajF1dUFhcGJ3Z0JXRExHU2RTQXBnbWMxbkd5R05nQWFvV04talJZWlNtQ1VFM0pVMVNHS1NlWmFzcmMtaFM5ei1JaWxXUzMtaGxLQjliUjRZV0MtczRSV1BvYXFuWlh2WWVobUNmNDJpOXBkeGVwSHBjMHZwSkdSalNNTHhGQ2sxVFhHTkd5VnExMmFPVVhiRC1zNnYzNlliam96dzBreFd1VUdGby1YOXFXLTY2S0tUV3NsYXAzb21MSjVuVXUyTF90SkE?oc=5\" target=\"_blank\">Stocks to Watch Today: Lenskart, Rail Vikas Nigam, GR Infraprojects, Knowledge Marine, HEG, Nibe, Manika...</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Moneycontrol.com</font>",
+      "published_at": "2026-09-20T20:04:47+00:00",
+      "body_chars": 1100,
+      "title_chars": 126
+    },
+    {
+      "news_id": "news_f289fc3294f5c91c",
+      "source_id": "moneycontrol_top",
+      "url": "https://news.google.com/rss/articles/CBMiugJBVV95cUxQYjdiOEd2SVBoQXoxcDZzdHc0b0FpMDJvNkJ5NDRJeFdUUTJXUms3SmZFeXY4Wk5ONWM2alg1V2RrNFIwNWRtVjh0a0tRbS1jS043SFY4bXBvb2tLbUVfeVNDTVFMb2JOTWVtdlhqS0VPRWJDNDNPcV94UVB5NEN0Z3pTZXl6OFdpNm96ZEZxaV9GSTJScFl1MVRsUUVBdGEwRlNjZE1SVVl6MlkzYVBidTMyVURQSU51eXVBbkJwRUc0eWlMbmdkVkNYUmgtYnROVmRjdXZxVDRPU0JJUWs0dTQxSmI3VTBKdHo4WTZ5cTRNZXNTZUlwZGViNHB3amwxZUtxWjRfZDJ2VXpVSG1PcHhRU28tODFqdUthSDNpemF2ZE93RkhBaU8wbnZBTzZjVm5JUXN6NG94Z9IBvwJBVV95cUxQMTJRNlpIMlJqX3dPaVA3Q0I3Q1RyLW85VE5DSU80QkpaVzVSZlI2NWhYblFuQ1JRNHlOWmhFNFhHXzNWMi1ERDhLN052UDBfRDZUb1NvNmlQZ0dpcDQ5aE9GQVZpZlVyMWE4dGdSY0wwcDRldEw4Z3JUV1oydUg4NmFzTmk5R0VQcmZvYzJ2by1jYWFaLXlpMlprSnM5NTdWem5uTG5BUHdKUWZpOEktNEJXNlg5bXJoVzU4aU1WWmJtNng1TWlOVFhnX1lZdENLenVNYy1fVDZrdU5vTjFTRFZtNk1qTEJRbGFGRnlYQmZKNVFDQTBBZFBSNTFHX3oxZ2s2V3lrVW95NGIwS05DU1ZoanZfeEJuWWprN2VlZU1TYUdFZXdFMW14eU1iWVRUVXZfNF9FOExrdy1QZzJn?oc=5",
+      "title": "Kareena Kapoor Birthday: Bollywood's Bebo's $50 million net worth, luxurious properties, best films, love... - Moneycontrol.com",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMiugJBVV95cUxQYjdiOEd2SVBoQXoxcDZzdHc0b0FpMDJvNkJ5NDRJeFdUUTJXUms3SmZFeXY4Wk5ONWM2alg1V2RrNFIwNWRtVjh0a0tRbS1jS043SFY4bXBvb2tLbUVfeVNDTVFMb2JOTWVtdlhqS0VPRWJDNDNPcV94UVB5NEN0Z3pTZXl6OFdpNm96ZEZxaV9GSTJScFl1MVRsUUVBdGEwRlNjZE1SVVl6MlkzYVBidTMyVURQSU51eXVBbkJwRUc0eWlMbmdkVkNYUmgtYnROVmRjdXZxVDRPU0JJUWs0dTQxSmI3VTBKdHo4WTZ5cTRNZXNTZUlwZGViNHB3amwxZUtxWjRfZDJ2VXpVSG1PcHhRU28tODFqdUthSDNpemF2ZE93RkhBaU8wbnZBTzZjVm5JUXN6NG94Z9IBvwJBVV95cUxQMTJRNlpIMlJqX3dPaVA3Q0I3Q1RyLW85VE5DSU80QkpaVzVSZlI2NWhYblFuQ1JRNHlOWmhFNFhHXzNWMi1ERDhLN052UDBfRDZUb1NvNmlQZ0dpcDQ5aE9GQVZpZlVyMWE4dGdSY0wwcDRldEw4Z3JUV1oydUg4NmFzTmk5R0VQcmZvYzJ2by1jYWFaLXlpMlprSnM5NTdWem5uTG5BUHdKUWZpOEktNEJXNlg5bXJoVzU4aU1WWmJtNng1TWlOVFhnX1lZdENLenVNYy1fVDZrdU5vTjFTRFZtNk1qTEJRbGFGRnlYQmZKNVFDQTBBZFBSNTFHX3oxZ2s2V3lrVW95NGIwS05DU1ZoanZfeEJuWWprN2VlZU1TYUdFZXdFMW14eU1iWVRUVXZfNF9FOExrdy1QZzJn?oc=5\" target=\"_blank\">Kareena Kapoor Birthday: Bollywood's Bebo's $50 million net worth, luxurious properties, best films, love...</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Moneycontrol.com</font>",
+      "published_at": "2026-09-21T06:34:47+00:00",
+      "body_chars": 1094,
+      "title_chars": 127
+    },
+    {
+      "news_id": "news_496823c2dfca3467",
+      "source_id": "moneycontrol_top",
+      "url": "https://news.google.com/rss/articles/CBMiswJBVV95cUxNb1pjbm53TElySi0tNHFqWnBfdmptbFdreFFUcndteHhZU0JyWkVqbUtmS19lN3d5cGRqZExFczl4dVZwRWRWUFRBVkFEZlA2bTJRNkJZQXJBNWsyY3huSURIanVHWEpSeS1kak5KeEtIV05fVHNHWVR4VUxBWHdnMWJ4NEtJNWtlSWxjdjJVN2pvNjkxVjBGSW5ha3Bfd1dzT1JmekF2VnJuY0hzQzlUZUN4SHhDUjMyWmprWGFuLXhnRFgtMGxwSXhlNjdWaUFCMjNNSUN2WkhJeFQ0cTZLQjl4VWpfbFdyWVl2TDNMYU51WjBJdU1QMTFUSVhyUGRWVzEyZzI3b0ZwcWhkT3E4WHMwSU1YcjBIc3NZM2htT1RxNWxvOEI0ZWVEeUp3WjFra1pr0gG4AkFVX3lxTE5XUHFBWUhja0Z5aXJmQWNUWDFtbS1XUHNHNjhjdHNXclRIeDAwSTdUMFlid0tmNFJRVkRSc24wbGNlVDd0aWF3SUVxQ2lFOFBvSTd2UWtZVDl4MmlTWGVGTjFTVm94OWZqaDJqaklZOUpqcVlBTkM5SE1JQjQ5VVN1clJsN2lZbGw2eldLYW1Ga05pZjVlNnRHeVpJQUQ5Y3JKbk1JUV9vdXhiT1pseDhXYmZidzQ3ZE9BeTZJYkhDUXc2ZDBwamdWNlZRRm5GQ2RCOWszbXBkT3lvVXFrME40VGJPeXVJRTZMcTU0d1Q4b0JETFNfYUhwM0tDT1o2OEd1OEw1NDZiNFR4Q2ZBbklYTEJiZFFaQXMxc2VqNWhDZUdodjdqMWwxaDBzLXRUM2tSLTRkU3k0Tw?oc=5",
+      "title": "Technical View: Nifty 50 needs decisive move above 23,600 for trend reversal; Bank Nifty faces immediate... - Moneycontrol.com",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMiswJBVV95cUxNb1pjbm53TElySi0tNHFqWnBfdmptbFdreFFUcndteHhZU0JyWkVqbUtmS19lN3d5cGRqZExFczl4dVZwRWRWUFRBVkFEZlA2bTJRNkJZQXJBNWsyY3huSURIanVHWEpSeS1kak5KeEtIV05fVHNHWVR4VUxBWHdnMWJ4NEtJNWtlSWxjdjJVN2pvNjkxVjBGSW5ha3Bfd1dzT1JmekF2VnJuY0hzQzlUZUN4SHhDUjMyWmprWGFuLXhnRFgtMGxwSXhlNjdWaUFCMjNNSUN2WkhJeFQ0cTZLQjl4VWpfbFdyWVl2TDNMYU51WjBJdU1QMTFUSVhyUGRWVzEyZzI3b0ZwcWhkT3E4WHMwSU1YcjBIc3NZM2htT1RxNWxvOEI0ZWVEeUp3WjFra1pr0gG4AkFVX3lxTE5XUHFBWUhja0Z5aXJmQWNUWDFtbS1XUHNHNjhjdHNXclRIeDAwSTdUMFlid0tmNFJRVkRSc24wbGNlVDd0aWF3SUVxQ2lFOFBvSTd2UWtZVDl4MmlTWGVGTjFTVm94OWZqaDJqaklZOUpqcVlBTkM5SE1JQjQ5VVN1clJsN2lZbGw2eldLYW1Ga05pZjVlNnRHeVpJQUQ5Y3JKbk1JUV9vdXhiT1pseDhXYmZidzQ3ZE9BeTZJYkhDUXc2ZDBwamdWNlZRRm5GQ2RCOWszbXBkT3lvVXFrME40VGJPeXVJRTZMcTU0d1Q4b0JETFNfYUhwM0tDT1o2OEd1OEw1NDZiNFR4Q2ZBbklYTEJiZFFaQXMxc2VqNWhDZUdodjdqMWwxaDBzLXRUM2tSLTRkU3k0Tw?oc=5\" target=\"_blank\">Technical View: Nifty 50 needs decisive move above 23,600 for trend reversal; Bank Nifty faces immediate...</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Moneycontrol.com</font>",
+      "published_at": "2026-09-21T11:25:27+00:00",
+      "body_chars": 1075,
+      "title_chars": 126
+    },
+    {
+      "news_id": "news_ea0d26d015c4eeeb",
+      "source_id": "moneycontrol_top",
+      "url": "https://news.google.com/rss/articles/CBMirAJBVV95cUxOYUtuTE8wbHVUc2FELXFqM3FFOC1NeklpTDh1N3QydDc2d0lKc2g0VlJMVzZSRTMwVzVzQmUxMUdidWN5UlVmTVlfeGtPNHBGeDNzOTFqTE1JcFdVVUtxTUVnUnZGbWFUeThNd0JrR19VclJqSWZwNE90UkFxVEd5S0t1ZEdmQWFWVGZjcGRUNDQ5Tk9JLWRQaFIyUWJtc3BITzNwWnA0eTBkUGxPSVVUbUh5Zi04QkFGWFV0azNuSkJVcFRTQVRBXzk5NDl5S1NVRDFrT1NCY1d5ZmpONU41MVE4bjhUWUQ4MnNDRG54RHo4dE5vR1p2MU9obC1JWTN4ZG9tWHM5d1VhVWVJYTBJdWMzdkU2eGRWRzhRYlNCSGVMYlVYWm5JbVlxY0nSAbICQVVfeXFMT0UtdDBMeUs0Y21nMURfLU8wM1RPNU9raFFSVkpFZ1hpeENDR3JxOUhVbUdDQWYtalRvVmF2TWttc2NjR1dmZ2I0aWl0dE5aNmdaNG1wWHZlUTVnVDZjWjBMTDlqbTcyZ21oRmp4RHFzTFAtYnZKbFdvTmVISjVZbjA4ZkQyNXIwWm1GckhMcHk0aUpqYUxxbUp0XzMyS3ZJYk5NZGtpeTBXSlJXc1JMNFEyUHBLeE1sRzN6UmtLT2c2ckRkMkd6MHpiOEtMTUNQZ0NJLTk5aGd5QjVwVEZhYTdtYldrT2lWWXVGUy0xN1dQQmhkOEJSRERQWHEyaklSa2VhNl9KT1Q5R3Rzb0xDVFYyeFM2d0hVVlRoVkloSndnN1pNZkY3S1RrMXhIcmo4V0d3?oc=5",
+      "title": "Trade Spotlight: How should you trade UNO Minda, Tilaknagar Industries, ASK Automotive, Alembic Pharma,... - Moneycontrol.com",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMirAJBVV95cUxOYUtuTE8wbHVUc2FELXFqM3FFOC1NeklpTDh1N3QydDc2d0lKc2g0VlJMVzZSRTMwVzVzQmUxMUdidWN5UlVmTVlfeGtPNHBGeDNzOTFqTE1JcFdVVUtxTUVnUnZGbWFUeThNd0JrR19VclJqSWZwNE90UkFxVEd5S0t1ZEdmQWFWVGZjcGRUNDQ5Tk9JLWRQaFIyUWJtc3BITzNwWnA0eTBkUGxPSVVUbUh5Zi04QkFGWFV0azNuSkJVcFRTQVRBXzk5NDl5S1NVRDFrT1NCY1d5ZmpONU41MVE4bjhUWUQ4MnNDRG54RHo4dE5vR1p2MU9obC1JWTN4ZG9tWHM5d1VhVWVJYTBJdWMzdkU2eGRWRzhRYlNCSGVMYlVYWm5JbVlxY0nSAbICQVVfeXFMT0UtdDBMeUs0Y21nMURfLU8wM1RPNU9raFFSVkpFZ1hpeENDR3JxOUhVbUdDQWYtalRvVmF2TWttc2NjR1dmZ2I0aWl0dE5aNmdaNG1wWHZlUTVnVDZjWjBMTDlqbTcyZ21oRmp4RHFzTFAtYnZKbFdvTmVISjVZbjA4ZkQyNXIwWm1GckhMcHk0aUpqYUxxbUp0XzMyS3ZJYk5NZGtpeTBXSlJXc1JMNFEyUHBLeE1sRzN6UmtLT2c2ckRkMkd6MHpiOEtMTUNQZ0NJLTk5aGd5QjVwVEZhYTdtYldrT2lWWXVGUy0xN1dQQmhkOEJSRERQWHEyaklSa2VhNl9KT1Q5R3Rzb0xDVFYyeFM2d0hVVlRoVkloSndnN1pNZkY3S1RrMXhIcmo4V0d3?oc=5\" target=\"_blank\">Trade Spotlight: How should you trade UNO Minda, Tilaknagar Industries, ASK Automotive, Alembic Pharma,...</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Moneycontrol.com</font>",
+      "published_at": "2026-09-21T02:12:07+00:00",
+      "body_chars": 1056,
+      "title_chars": 125
+    },
+    {
+      "news_id": "news_c6a24c4533eeb752",
+      "source_id": "worldbank_news",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdlFwX3F5TjE5MTJkbUNQcnJWSjdiTWwxR2R2bjV0Tk90TUVfbFNUS2NUNnh3aklBMVhiT1FPVGhvaEs1V0FrRFJVYzZiTE4xaWloRHBZTHFrdngxMUF4WldDWlBucDBIaVZuaUJ3ZU1MQk5ZVEF6TURWZXVaMkhaTUo5SWFYb2JGcWZwaVdEcVhDNmZEYmlJOHUtSmVZT0E?oc=5",
+      "title": "Western and Central Africa - WESTERN AND CENTRAL AFRICA- P178497- Harmonizing and Improving Statistics in West and Central Africa - Series of Projects 1 (HISWACA - SOP 1) - Procurement Plan (English) - World Bank Group",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNdlFwX3F5TjE5MTJkbUNQcnJWSjdiTWwxR2R2bjV0Tk90TUVfbFNUS2NUNnh3aklBMVhiT1FPVGhvaEs1V0FrRFJVYzZiTE4xaWloRHBZTHFrdngxMUF4WldDWlBucDBIaVZuaUJ3ZU1MQk5ZVEF6TURWZXVaMkhaTUo5SWFYb2JGcWZwaVdEcVhDNmZEYmlJOHUtSmVZT0E?oc=5\" target=\"_blank\">Western and Central Africa - WESTERN AND CENTRAL AFRICA- P178497- Harmonizing and Improving Statistics in West and Central Africa - Series of Projects 1 (HISWACA - SOP 1) - Procurement Plan (English)</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">World Bank Group</font>",
+      "published_at": "2026-09-17T07:00:00+00:00",
+      "body_chars": 548,
+      "title_chars": 218
+    },
+    {
+      "news_id": "news_91bca3ee3a758dec",
+      "source_id": "worldbank_news",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNU1dRNnE5MFloQnRYOGFnSk5XblptT0ZFTHVWZkpOMGNtdUd5ODlFYkJuTjdsZUFPVkFYSmFwNE9uLS1LUmRsOFZldlBQMnlTVHJfVUl1TDNxbnRDZnRuV29GVTFadGg4bnlxaDQtdFV6OWc2Q0JVS1A0SC0zQ0I0R2hiQ1lqVGkweU9vejU3NktQbzc4ZkxoazlxNmpXVnM?oc=5",
+      "title": "Additional Financing Environmental and Social Review Summary (ESRS) - Democratic Republic of Congo Health Emergency Preparedness Response and Resilience Project - P504532 - AF No: 1 (English) - World Bank Group",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNU1dRNnE5MFloQnRYOGFnSk5XblptT0ZFTHVWZkpOMGNtdUd5ODlFYkJuTjdsZUFPVkFYSmFwNE9uLS1LUmRsOFZldlBQMnlTVHJfVUl1TDNxbnRDZnRuV29GVTFadGg4bnlxaDQtdFV6OWc2Q0JVS1A0SC0zQ0I0R2hiQ1lqVGkweU9vejU3NktQbzc4ZkxoazlxNmpXVnM?oc=5\" target=\"_blank\">Additional Financing Environmental and Social Review Summary (ESRS) - Democratic Republic of Congo Health Emergency Preparedness Response and Resilience Project - P504532 - AF No: 1 (English)</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">World Bank Group</font>",
+      "published_at": "2026-09-19T14:58:17+00:00",
+      "body_chars": 540,
+      "title_chars": 210
+    },
+    {
+      "news_id": "news_2506b0ba60bfebb1",
+      "source_id": "worldbank_news",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQOS1fMUZIQTJaU1RwUlZkeGlWYXBMZ2dDZ29MY3podmc4M1EwLWRYa2kzeVFicHBvT0NDVnQtQ25pajg1QnAteXhDQzlobXpNNkN4dzlxQW0xQm5ZR1RzTEd5WUtwMFlSYjVuazRJbnVwcVVRWF81cGN2QldTenBfa3NQUXlIWll4aHlUejBTb2daR2ZFNFplbm9OQmlTdEU?oc=5",
+      "title": "Western and Central Africa - WESTERN AND CENTRAL AFRICA- P515128- Accelerating Innovation and Catalyzing Capacity for Resilience in Africa - FSRP Phase 4 - Procurement Plan (English) - World Bank Group",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxQOS1fMUZIQTJaU1RwUlZkeGlWYXBMZ2dDZ29MY3podmc4M1EwLWRYa2kzeVFicHBvT0NDVnQtQ25pajg1QnAteXhDQzlobXpNNkN4dzlxQW0xQm5ZR1RzTEd5WUtwMFlSYjVuazRJbnVwcVVRWF81cGN2QldTenBfa3NQUXlIWll4aHlUejBTb2daR2ZFNFplbm9OQmlTdEU?oc=5\" target=\"_blank\">Western and Central Africa - WESTERN AND CENTRAL AFRICA- P515128- Accelerating Innovation and Catalyzing Capacity for Resilience in Africa - FSRP Phase 4 - Procurement Plan (English)</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">World Bank Group</font>",
+      "published_at": "2026-09-19T14:58:16+00:00",
+      "body_chars": 531,
+      "title_chars": 201
+    },
+    {
+      "news_id": "news_429f2f2046250d6c",
+      "source_id": "worldbank_news",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQdjJFS3padDlCRUZmbW1LR1Nrdi1nRVZjSVgyQXFWZ21YNXBtcFlpRnlWRlVnX0RyZ3ZELTZYUmdfSmhqZGM3Z21UeG5IazZ6amoweVhoXzh2bHVUelJTeXRjRmNQY2VpVXBBWjVzNkZSYlZJYzlLdlVPRUNjSnNUVE5ncHBwSmZxaGtCRjlyQjhhNEFrWEV4Z1E4SndGMDA?oc=5",
+      "title": "Appraisal Environmental and Social Review Summary (ESRS) - Viet Nam Renewable Energy Accelerating Change: 500 kV Krongbuk - Tay Ninh 1 Transmission Line Project - P516693 (English) - World Bank Group",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxQdjJFS3padDlCRUZmbW1LR1Nrdi1nRVZjSVgyQXFWZ21YNXBtcFlpRnlWRlVnX0RyZ3ZELTZYUmdfSmhqZGM3Z21UeG5IazZ6amoweVhoXzh2bHVUelJTeXRjRmNQY2VpVXBBWjVzNkZSYlZJYzlLdlVPRUNjSnNUVE5ncHBwSmZxaGtCRjlyQjhhNEFrWEV4Z1E4SndGMDA?oc=5\" target=\"_blank\">Appraisal Environmental and Social Review Summary (ESRS) - Viet Nam Renewable Energy Accelerating Change: 500 kV Krongbuk - Tay Ninh 1 Transmission Line Project - P516693 (English)</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">World Bank Group</font>",
+      "published_at": "2026-09-18T10:36:04+00:00",
+      "body_chars": 529,
+      "title_chars": 199
+    },
+    {
+      "news_id": "news_7e4547b3b8ba66b6",
+      "source_id": "reuters_top",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPbEUwclZPazRvRlB5dHQzNkNGVUhicFZBam5neXMySTM1cFR2QmJGMXg1OU9uVnN6ckxHWWNRT2toWDZCekNZUGpiem5ZVnhBU3E1NDBaTkJ2ODhQUW5BZ1FHQS1FWnh4WXY4SDNsYmpKcnNLanhBdnROcGxYbFpEdFJfSjk0amNFMDVhdXhaRmVZQ0FmbktaLUdKbE5kY0NyU1N6WUxxRHdNanhyVWVWTDNlVFFBdGJ1XzNrQTUwQnBTMlJ6MFY4ajFWM1FPb2hmdkE?oc=5",
+      "title": "Warner Bros, Paramount rise on report California settlement talks could clear merger hurdle - Reuters",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxPbEUwclZPazRvRlB5dHQzNkNGVUhicFZBam5neXMySTM1cFR2QmJGMXg1OU9uVnN6ckxHWWNRT2toWDZCekNZUGpiem5ZVnhBU3E1NDBaTkJ2ODhQUW5BZ1FHQS1FWnh4WXY4SDNsYmpKcnNLanhBdnROcGxYbFpEdFJfSjk0amNFMDVhdXhaRmVZQ0FmbktaLUdKbE5kY0NyU1N6WUxxRHdNanhyVWVWTDNlVFFBdGJ1XzNrQTUwQnBTMlJ6MFY4ajFWM1FPb2hmdkE?oc=5\" target=\"_blank\">Warner Bros, Paramount rise on report California settlement talks could clear merger hurdle</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Reuters</font>",
+      "published_at": "2026-09-21T14:42:31+00:00",
+      "body_chars": 499,
+      "title_chars": 101
+    },
+    {
+      "news_id": "news_8993808bd3fe1a20",
+      "source_id": "reuters_top",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNOHdta1BaRjhDaDhSOHRoRzhrX01QOG9yZVBlVnFWQWRwdi15Z0h2UjRXUVBsZDRJTG1ZSmxDQzNNb3NWYnNUSmxRbklUazNJMXM3NE1IbWQ3UTlfQzdTS2tKb2RLS00xWndjSU9CMnoyZ09WVmstaXluY1Zld09XNno0ZHNNSmhGenZHcGIteTRuQ3NQYjFTVVhuS1N4SWZ0a0szaTl5NG5ZdExsQlRiQS1SRG9UZnNzMVpDM2JNNWlaaVFGTjh2OVBqNEFhbTg4QmdB?oc=5",
+      "title": "Costs to cool Bangladesh garment factories can be recovered within four years, study shows - Reuters",
+      "text": "<a href=\"https://news.google.com/rss/articles/CBMi0wFBVV95cUxNOHdta1BaRjhDaDhSOHRoRzhrX01QOG9yZVBlVnFWQWRwdi15Z0h2UjRXUVBsZDRJTG1ZSmxDQzNNb3NWYnNUSmxRbklUazNJMXM3NE1IbWQ3UTlfQzdTS2tKb2RLS00xWndjSU9CMnoyZ09WVmstaXluY1Zld09XNno0ZHNNSmhGenZHcGIteTRuQ3NQYjFTVVhuS1N4SWZ0a0szaTl5NG5ZdExsQlRiQS1SRG9UZnNzMVpDM2JNNWlaaVFGTjh2OVBqNEFhbTg4QmdB?oc=5\" target=\"_blank\">Costs to cool Bangladesh garment factories can be recovered within four years, study shows</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Reuters</font>",
+      "published_at": "2026-09-20T22:37:12+00:00",
+      "body_chars": 499,
+      "title_chars": 100
+    }
+  ]
+}

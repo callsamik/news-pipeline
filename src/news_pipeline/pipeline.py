@@ -1,19 +1,16 @@
-"""Orchestrator composing fetch, dedupe, freshness, summarize, and optional store."""
+"""Orchestrator entrypoint — delegates to LangGraph pipeline workflow."""
 
 from __future__ import annotations
 
 from collections.abc import Sequence
-from datetime import datetime, timezone
-from typing import Callable
 
 import httpx
 
-from news_pipeline.fetch import ClockFn, FetchTextFn, fetch_source
-from news_pipeline.freshness import filter_items_by_window
-from news_pipeline.identity import dedupe_by_id
-from news_pipeline.models import NewsItem, NewsSource, PipelineRunResult, SourceFetchResult
+from news_pipeline.fetch import ClockFn, FetchTextFn
+from news_pipeline.graph import invoke_pipeline
+from news_pipeline.llm.client_protocol import LLMClient
+from news_pipeline.models import NewsSource, PipelineRunResult, SummarizationConfig
 from news_pipeline.store import NewsStore
-from news_pipeline.summarize import summarize_item
 
 
 def run_pipeline(
@@ -25,37 +22,23 @@ def run_pipeline(
     fetch_text: FetchTextFn | None = None,
     client: httpx.Client | None = None,
     clock: ClockFn | None = None,
+    llm_client: LLMClient | None = None,
+    summarization: SummarizationConfig | None = None,
 ) -> PipelineRunResult:
-    """Run the full news trunk for caller-selected transport sources."""
-    now_fn: Callable[[], datetime] = clock or (lambda: datetime.now(timezone.utc))
-    started_at = now_fn()
+    """Run the full news trunk via LangGraph (fetch → … → summarize → persist).
 
-    source_results: list[SourceFetchResult] = []
-    collected: list[NewsItem] = []
-
-    for source in sources:
-        result, items = fetch_source(
-            source,
-            client=client,
-            fetch_text=fetch_text,
-            clock=now_fn,
-        )
-        source_results.append(result)
-        collected.extend(items)
-
-    deduped = dedupe_by_id(collected)
-    fresh = filter_items_by_window(deduped, window_hours=window_hours, now=started_at)
-    summarized = [
-        summarize_item(item, max_chars=max_summary_chars) for item in fresh
-    ]
-
-    if store is not None:
-        store.upsert_items(summarized)
-
-    completed_at = now_fn()
-    return PipelineRunResult(
-        started_at=started_at,
-        completed_at=completed_at,
-        source_results=source_results,
-        items=summarized,
+    Without ``llm_client``, summarization is TextRank-only. With ``llm_client``,
+    optional batch LLM summarization uses all-or-nothing validation and TextRank
+    fallback per batch.
+    """
+    return invoke_pipeline(
+        list(sources),
+        window_hours=window_hours,
+        max_summary_chars=max_summary_chars,
+        store=store,
+        fetch_text=fetch_text,
+        http_client=client,
+        clock=clock,
+        llm_client=llm_client,
+        summarization=summarization,
     )

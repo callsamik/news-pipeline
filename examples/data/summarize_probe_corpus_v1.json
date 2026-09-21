@@ -1,0 +1,96 @@
+{
+  "corpus_id": "summarize_probe_1_v1",
+  "n": 10,
+  "items": [
+    {
+      "news_id": "news_16f0fd4b6597977a",
+      "source_id": "reuters_top",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdmtCaDgySDB0TTRLU2tuRzhJT3VZZEEtZVFkU1BjQVlCTlJJV2M1QzFuc0lCa3BHRGd2bi1DWjAzSU5yc3lSOU9uMkNPbnNZMDJYTW9pZ0c5SjNhUHRHeDNZOFdGYzgxTGRrdndyUjlqUnlyOFpxdkxLeWJFbW5wQ1YtaXpqS1RpTmdLRkJja0lWLUxYNUszNkZ1dXdjWDJXck5xNjNQWVNRYkxUQWhpcG9pR2FQNzFHVVdWcE5zVWlsdkhKQzZhTWgzbw?oc=5",
+      "title": "Aerospace suppliers test rare-earth alternatives to ease reliance on China - Reuters",
+      "text": "Aerospace suppliers test rare-earth alternatives to ease reliance on China - Reuters",
+      "published_at": "2026-09-21T10:14:18+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_d9169cd6a72d7cc4",
+      "source_id": "reuters_top",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQZ2RmNnNwRllpSzFHbnFpazQtMUtaaEpzX01CekNsaHNWR3BjdXh0UkNDenVRZmw4M0ZsN3h5Vi1FOHhfWE1ueERRSzdZUV9zdVhWZmx1TzN1VnlZWkVfajA1SXNLdlRYMHc1NENnbWtVVGJMOXpvTlZ0eFBLMGt1dTVHblB0dUlJNDN4VnU4M3JESXhkUGM4bWNyU1B0Y2dlN2x1bDZXWi0wWU9DTXFSWDhadEdCdw?oc=5",
+      "title": "Syrian ammunition depot explodes in fourth such blast this month - Reuters",
+      "text": "Syrian ammunition depot explodes in fourth such blast this month - Reuters",
+      "published_at": "2026-09-21T09:53:44+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_5bca7f9ae171f350",
+      "source_id": "reuters_top",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNWGFxNXJzLVRWMy1Qa0ZDNE9TMGRtRUFfclhhbUZOVUc0TEVHaHUtRTJPZ0tGVmlZZF9qZGFDSHU5QWVINzJSb3JlUnZFbVZZUEZnWjN1SWMzdnhBTGQtRU93YURjVVBqa2x5LWtRSnZhRHBDSElRak8tR3ZQN2psalhRUVo1a2tDbFV0MEhmcVEwUzAtQVBGWVVERmpfaTNPU3VSY0diMk15cnhhSTN2QQ?oc=5",
+      "title": "Seven Ethiopian armed groups announce anti-government alliance - Reuters",
+      "text": "Seven Ethiopian armed groups announce anti-government alliance - Reuters",
+      "published_at": "2026-09-21T10:33:40+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_a653747b029a332c",
+      "source_id": "reuters_top",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNMzdwS0ZXMHNpVnRGUk9uXzMtcDdpOWlJR0xPaWpMT2oyRFh0RUg5cnVUeHdpS213WXBPODdFSkhDYV9wVlJoc3ZpcGJDNXVZLTZsdXh3Ym9qLXlhdW1ieUc0UWtETE5KY01PNG03akxWUHVvOUVnVTZjalVGejZqZDZXUG1nS0d3TDNLSXlHci1nMHVFdzU1dGxTRWlSVlBFZ25OY0JqckpXeGdqNDRocnR3WEp6NWplY3c?oc=5",
+      "title": "Kremlin rejects Le Pen/Bardella rebuke, says Russia is no threat to France - Reuters",
+      "text": "Kremlin rejects Le Pen/Bardella rebuke, says Russia is no threat to France - Reuters",
+      "published_at": "2026-09-21T10:33:43+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_b4395681e2778787",
+      "source_id": "moneycontrol_top",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0zdGRxTU1aLVc0dk5pUWhmWkhGRF9KUjcxVWFTbjdENjVqNXZUOHQ4Uk82d2lIYVpsNXplZGtVbnc3c05GRnBlTkp2U1VMM2tGRGpCUVlWd2JzazdKcnNNUVR3RWlLVHQ1eTJzdHpVbjByUU0?oc=5",
+      "title": "Roopa Screen Ltd IPO Date: Check Issue Date, Price, Lot size, Subscription, News and Details - Moneycontrol - Moneycontrol.com",
+      "text": "Roopa Screen Ltd IPO Date: Check Issue Date, Price, Lot size, Subscription, News and Details - Moneycontrol - Moneycontrol.com",
+      "published_at": "2026-09-21T10:01:15+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_4bfa6e8ae9188f0b",
+      "source_id": "moneycontrol_top",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBqQ256SkVENEVYUVpGT3JwWVp2V2R3QjdmUWxZUEJtVkpzRmRvcm90VTc0YUJUbkpvUHpCM0N5V3dKV19yenF6Ui1sME0td3o2OXRrNk5sLTlBSW1SSE9PZzR3dll6b3NOamR1cVFYX2VkOWxrSE0wU2J3?oc=5",
+      "title": "Green Asia Impex Ltd IPO Date: Check Issue Date, Price, Lot size, Subscription, News and Details - Moneycontrol - Moneycontrol.com",
+      "text": "Green Asia Impex Ltd IPO Date: Check Issue Date, Price, Lot size, Subscription, News and Details - Moneycontrol - Moneycontrol.com",
+      "published_at": "2026-09-21T10:03:27+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_5123f3e1efee7304",
+      "source_id": "moneycontrol_top",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNa05wbkx2aW4xUkdvbmYxc2FrdnQ2V1dxTDYxVDExVDg5NUhHdWxWeE9vVnhmUUNHNlo4RU16YjhXY0NENUZCS19KclVsYm55bk96aDBtUXFoSmRNTkFkLVNiN0dSQ1lRQzQwQW1pY2NWUVE0XzVkM2loVW5pZm1OdFh2cktjRC01RjRpUDFVMnRLdFVhTjRnSU5VN1duZV9FLVJ3MjVPaHYtaXlKXzNrY2F5MVFXaTFaXzdzN2JhaldMTHBTcHNMWXJyM191cE5BbWt4UU94RmoyQdIB3wFBVV95cUxPaDBpZE5zREVWUzdqcDFzSVM2UnQxZ21RS2tkUHlLSFNzcWdUajhVaUs4V1ZaVWZneTVIZmNsdkxpbDJIOE90Y25kWXZPN2c2a1dDLUE2NGJ2OGNjN0JLY0hvMFNhdnYtTlM1d3JCTzRmRURlSGNXdnUtTkRzdmJ1NjNBS3R4b3VaRlYxMk5pWjFUTUwtcnhuRTU4SEY5aHBmb0p5NnlsR2NqYmYyT2hlVWFNZVRST3Q2Z1Mzb0pQM0RIVG03b0RXMWxJbGt5Z0IyUUJyc3lmZEhFMGFJOHBV?oc=5",
+      "title": "Delhi court sets aside order refusing FIR against Sonia Gandhi over voter roll inclusion - Moneycontrol.com",
+      "text": "Delhi court sets aside order refusing FIR against Sonia Gandhi over voter roll inclusion - Moneycontrol.com",
+      "published_at": "2026-09-21T10:53:36+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_53e3fc1ef5943cee",
+      "source_id": "worldbank_news",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNU2c0LXF3SmhqX204VTIxcWY5TUNabGJzMDl2QWFuaDR5Y0hsM1Qta1RUS1B0dVBRbVRZZUd6a3BkUmY4R3g4dU56U2ROVURxUk5NVmI4anUtSHczS3ZBMW1HRXMwSmlncDlOWVRvZWdMWGZMRlhWdl9KWW91ZmlReXZTRUVqTUNIcjA0RVhsLXItLUxyb1RUam9JMDlRbHM?oc=5",
+      "title": "Disclosable Version of the ISR - Regional Climate Resilience Program for Eastern and Southern Africa 1 Project (RCRP1) - P180171 - Sequence No : 7 (English) - World Bank Group",
+      "text": "Disclosable Version of the ISR - Regional Climate Resilience Program for Eastern and Southern Africa 1 Project (RCRP1) - P180171 - Sequence No : 7 (English) - World Bank Group",
+      "published_at": "2026-09-21T06:53:34+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_7cf74fb3fd07d73a",
+      "source_id": "worldbank_news",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQQVk2QlVRbzFFakd2WlRzNE5LY292ZzZvRjJXSG9aSlNGUGZlOFI0MG5ESWFBbHlXbVBSVUpSbFhnMGR6eVJpNXhBWE5IUk82ODJ3S0pKN0JncHdUNUtBd1N6b1pueEpCblRKd1owQml4c0ctb3hBdEZSWF9IR3N0em9DTVRQdWgtYmMxbGc4dTBoUWdmSHRWTTktbHJQYUE?oc=5",
+      "title": "Indonesia - EAST ASIA AND PACIFIC- P180860- Integrated Land Administration and Spatial Planning Project - Procurement Plan (English) - World Bank Group",
+      "text": "Indonesia - EAST ASIA AND PACIFIC- P180860- Integrated Land Administration and Spatial Planning Project - Procurement Plan (English) - World Bank Group",
+      "published_at": "2026-09-21T06:53:34+00:00",
+      "note": "title_as_text_if_body_cleared"
+    },
+    {
+      "news_id": "news_1d8dc9e2c381ad87",
+      "source_id": "worldbank_news",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPRVVFV2pIT2NFUkEwSXdCTFJsYkt2QXlKd0MyZm9XZGRkV1VHWlV0Y04yanpSUzlacXpSTS1DeHdNdUNYZEMwS0pPWlQ0cy00QWFETHcwNV94TkFCSlM5Z3BZdUhDVnotblhhLVRWME1nUFV3X1VrVlhNeXJ3Y01BVGg4VllPam9EVVhPRktfVktrblN2Z3RiLUFzSFFfTlU?oc=5",
+      "title": "Environmental and Social Commitment Plan (ESCP) T\u00fcrkiye University Hospital Resilience Project (P515155) (English) - World Bank Group",
+      "text": "Environmental and Social Commitment Plan (ESCP) T\u00fcrkiye University Hospital Resilience Project (P515155) (English) - World Bank Group",
+      "published_at": "2026-09-20T20:25:36+00:00",
+      "note": "title_as_text_if_body_cleared"
+    }
+  ]
+}

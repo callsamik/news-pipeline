@@ -1,20 +1,87 @@
 # news-pipeline
 
-Generic news fetch → parse → identity dedupe → freshness window → extractive summarize → optional persist.
+Generic news fetch → parse → identity dedupe → freshness window → summarize → optional persist.
+
+Orchestration is **LangGraph**. Domain modules remain authoritative for what each step means.
 
 **Import:** `news_pipeline`  
-**Status:** Public alpha (`0.1.0a1`)
+**Status:** Public alpha (`0.1.0a1`) — **library freeze candidate** after FB-1
+
+## Architecture
+
+| Layer | Owns |
+| :--- | :--- |
+| **LangGraph** | Flow — when/where steps run |
+| **Domain modules** | Meaning/mechanics — fetch, identity, **TextRank** summarize, store |
+| **`LLMClient` Protocol** → **multiprovider-llm** | Model access (optional) |
+| **AIN / consumer** | Linking, impact, mentions, gates, digests — never imported here |
+
+```text
+Consumer / AIN
+     │ configures multiprovider-llm
+     │ calls run_pipeline(llm_client=...)
+     ▼
+LangGraph pipeline
+  fetch → dedupe → freshness → summarize? → persist?
+                              /        \
+                       TextRank      LLM batch
+                       (sole det.)       ↓
+                                      validate
+                                       /    \
+                                    attach  TextRank fallback
+```
+
+**One sentence:** `news-pipeline` uses an LLM for primary summarization when configured; otherwise, or whenever the LLM batch fails validation, it uses its single deterministic TextRank summarizer as the safety fallback, with LangGraph controlling the workflow and AIN remaining entirely outside the library.
+
+**Hard firewall:** graph state and `NewsItem` never carry ticker/asset/catalog/impact/mention semantics.
 
 ## Owns / Consumes / Produces / Extends
 
 | | |
 | :--- | :--- |
-| **Owns** | Retrieve → parse → normalize → identity/hash dedupe → freshness window → generic extractive summarize → optional persist of **content items** |
-| **Consumes** | Caller-selected transport-only `NewsSource` list; HTTP (or injected `fetch_text`); optional `NewsStore`; injected `clock` |
-| **Produces** | Generic `NewsItem`, `SourceFetchResult`, `PipelineRunResult` — never investment features |
-| **Extends** | Parser kinds; fetch injection; store backend — no AIN types |
+| **Owns** | Retrieve → parse → normalize → identity/hash dedupe → freshness → TextRank summarize → optional LLM batch summarize (positional, all-or-nothing) → optional persist |
+| **Consumes** | Caller-selected `NewsSource` list; HTTP (or injected `fetch_text`); optional `NewsStore`; injected `clock`; optional Protocol-compatible `llm_client` |
+| **Produces** | Generic `NewsItem`, `SourceFetchResult`, `PipelineRunResult` (+ summarization stats) — never investment features |
+| **Extends** | Parser kinds; fetch injection; store backend; LLM client injection — no AIN types |
 
-The library does **not** own tier/credibility/tax policy, poll/sweep SLA, mentions, or impact analysis. Callers apply source policy before calling `run_pipeline`.
+## Summarization
+
+| Role | Implementation |
+| :--- | :--- |
+| **Primary** (when `llm_client` configured) | LLM batch via `multiprovider-llm` |
+| **Sole deterministic** (no LLM, or LLM batch rejected) | **TextRank** (stdlib; no second algorithm) |
+
+Without `llm_client`, behavior is TextRank-only.
+
+```python
+from news_pipeline import SummarizationConfig, run_pipeline
+
+result = run_pipeline(
+    sources,
+    llm_client=multiprovider_client,  # implements LLMClient Protocol
+    summarization=SummarizationConfig(
+        enabled=True,
+        batch_size=10,
+        timeout_seconds=240,  # one LLM batch invocation only; no retries in v1
+    ),
+)
+```
+
+- LLM sees ordered `{title, text}` only — never `news_id`, tickers, or catalog.
+- Accept only `{"summaries":[...]}` with exact length and non-empty strings.
+- On any failure: reject the **entire** batch → TextRank for every item in that batch.
+- Never fuzzy-match or recover identity from LLM output.
+- Stats: `summarization_mode` is `"llm"` or `"textrank"`; fallback counts use `llm_batches_fallback`.
+
+**TextRank degenerate handling (same implementation, not a second summarizer):** empty body → `title[:cap]`; no graph edges → rank by sentence length then index.
+
+Production client (separate package; implements `LLMClient`):
+
+```bash
+pip install "git+https://github.com/callsamik/multiprovider-llm.git"
+```
+
+Provider/model selection (e.g. Ollama + DeepSeek-R1:14B) is **caller configuration** via multiprovider-llm — not a library default.
 
 ## Identity v1
 
@@ -30,9 +97,7 @@ Golden vectors are tested in `tests/test_identity.py`. Batch dedupe within a run
 
 ## Optional persistence
 
-Pass a `NewsStore` (e.g. `SqliteNewsStore(path)`) to `run_pipeline` to upsert summarized items. Omit `store` (default `None`) for in-memory-only runs. The library never discovers `DATA_DIR` or AIN storage paths — the caller supplies the path.
-
-Stored payloads omit large `raw_text` (summary-centric); in-memory `NewsItem` values are never mutated.
+Pass a `NewsStore` (e.g. `SqliteNewsStore(path)`) to `run_pipeline` to upsert summarized items. The graph decides *whether* to persist; `store.py` owns *how*.
 
 ## Standalone example (no AIN)
 
@@ -41,13 +106,12 @@ pip install -e ".[dev]"
 python examples/minimal_pipeline.py
 ```
 
-The example uses injected fixture RSS (offline), runs `run_pipeline`, prints item ids/titles/summaries, and optionally persists to a temp SQLite file. It imports only `news_pipeline`.
-
 ## Requirements
 
 - Python `>=3.11,<4`
 - `httpx>=0.27,<1`
 - `feedparser>=6.0,<7`
+- `langgraph>=1.0,<2`
 
 ## Install
 
@@ -68,15 +132,50 @@ pytest -q
 from news_pipeline import (
     NewsSource,
     NewsItem,
+    SummarizationConfig,
+    SummarizationStats,
     run_pipeline,
     compute_item_id,
     dedupe_by_id,
     filter_items_by_window,
     summarize_item,
+    summarize_text,
+    textrank_summarize,
     fetch_source,
     SqliteNewsStore,
 )
 ```
+
+## Evidence gates
+
+```bash
+# TextRank golden + benchmark (no LLM):
+.venv/bin/python examples/ov_np_deterministic_fb_1.py
+
+# Real multiprovider-llm seam (Ollama; prefer when AIN worker idle):
+.venv/bin/python examples/ov_np_llm_api_1.py --dry-run
+.venv/bin/python examples/ov_np_llm_api_1.py
+```
+
+### Evidence freeze
+
+| Gate | Status |
+| :--- | :--- |
+| `OV-NP-LLM-SUMMARIZE-3` | **ACCEPTED** — DeepSeek-R1:14B satisfies the frozen batch/no-ID contract |
+| `OV-NP-LLM-API-1` | **PASS** — real multiprovider-llm → `run_pipeline` → LangGraph seam |
+| `OV-NP-DETERMINISTIC-FB-1` | **PASS** — TextRank sole deterministic / LLM fallback (see artifact) |
+
+```text
+LLM                         PRIMARY
+TextRank                    SOLE DETERMINISTIC SUMMARIZER / FALLBACK
+LangGraph                   ORCHESTRATION ONLY
+multiprovider-llm           MODEL/PROVIDER ACCESS ONLY
+AIN                         INVESTMENT INTELLIGENCE ONLY (unchanged; cutover separate)
+────────────────────────────────────
+news-pipeline               FROZEN (library boundary)
+```
+
+Artifacts: `examples/artifacts/np_llm_api_1_latest.json`, `examples/artifacts/np_deterministic_fb_1_latest.json`.
 
 ## License
 

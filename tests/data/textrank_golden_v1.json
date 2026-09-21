@@ -1,0 +1,51 @@
+{
+  "corpus_id": "np_textrank_golden_v1",
+  "experiment": "OV-NP-DETERMINISTIC-FB-1",
+  "max_chars": 400,
+  "max_sentences": 3,
+  "config": {
+    "sim_threshold": 0.1,
+    "redundancy_threshold": 0.7,
+    "pagerank_damping": 0.85,
+    "pagerank_iters": 40,
+    "max_graph_sentences": 80
+  },
+  "items": [
+    {
+      "id": "short",
+      "title": "Markets rise",
+      "body": "Indices closed higher on strong global cues.",
+      "expected_summary": "Indices closed higher on strong global cues."
+    },
+    {
+      "id": "normal",
+      "title": "Reliance earnings beat",
+      "body": "Reliance Industries reported strong quarterly earnings. The conglomerate beat analyst estimates on revenue growth. Reliance Jio added millions of subscribers in the period. Markets reacted positively to the results announcement. Analysts said the outlook remains constructive for the year ahead.",
+      "expected_summary": "Reliance Industries reported strong quarterly earnings. The conglomerate beat analyst estimates on revenue growth. Reliance Jio added millions of subscribers in the period."
+    },
+    {
+      "id": "long_financial",
+      "title": "Bank Nifty outlook",
+      "body": "The Bank Nifty index faced resistance near recent highs after a volatile session. Traders watched the 52,000 level as a near-term pivot for directional bias. Private lenders outperformed state-owned banks on stronger credit growth commentary. Foreign institutional investors remained net sellers for a third consecutive day. Derivatives data showed a build-up of call writing at higher strikes. Technical analysts said a decisive close above resistance would confirm trend reversal. Meanwhile, bond yields edged lower after softer inflation prints overseas. Currency markets were largely stable against the dollar basket.",
+      "expected_summary": "The Bank Nifty index faced resistance near recent highs after a volatile session. Traders watched the 52,000 level as a near-term pivot for directional bias. Technical analysts said a decisive close above resistance would confirm trend reversal."
+    },
+    {
+      "id": "repeated",
+      "title": "Factory cooling",
+      "body": "Cooling costs can be recovered within four years. A study shows cooling costs can be recovered within four years. Factories in Bangladesh may recover cooling investment within four years. Separately, exporters discussed energy efficiency upgrades.",
+      "expected_summary": "Cooling costs can be recovered within four years. Factories in Bangladesh may recover cooling investment within four years. Separately, exporters discussed energy efficiency upgrades."
+    },
+    {
+      "id": "numerical",
+      "title": "GDP print",
+      "body": "GDP grew 6.2 percent in the second quarter. Services contributed 3.1 percentage points to the expansion. Manufacturing output rose 4.8 percent year on year. The current account deficit narrowed to 1.1 percent of GDP.",
+      "expected_summary": "GDP grew 6.2 percent in the second quarter. Manufacturing output rose 4.8 percent year on year. The current account deficit narrowed to 1.1 percent of GDP."
+    },
+    {
+      "id": "weak_structure",
+      "title": "Press note",
+      "body": "Announcement today regarding project update status review pending further details available later stakeholders informed accordingly timeline subject to change without notice.",
+      "expected_summary": "Announcement today regarding project update status review pending further details available later stakeholders informed accordingly timeline subject to change without notice."
+    }
+  ]
+}

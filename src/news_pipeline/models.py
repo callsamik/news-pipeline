@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
 
 @dataclass(frozen=True)
@@ -54,9 +54,35 @@ class NewsItem:
     language: str = "en"
 
 
+SummarizationMode = Literal["textrank", "llm"]
+
+
+@dataclass(frozen=True)
+class SummarizationConfig:
+    """Pipeline-owned summarization knobs (not provider/model selection).
+
+    ``timeout_seconds`` applies to **one LLM batch invocation only**.
+    There are no retries in v1.
+    """
+
+    enabled: bool = True
+    batch_size: int = 10
+    timeout_seconds: float = 240.0
+
+
+@dataclass(frozen=True)
+class SummarizationStats:
+    summarization_mode: SummarizationMode
+    batches_total: int = 0
+    llm_batches_ok: int = 0
+    llm_batches_fallback: int = 0
+    llm_latency_ms: float = 0.0
+
+
 @dataclass(frozen=True)
 class PipelineRunResult:
     started_at: datetime
     completed_at: datetime
     source_results: list[SourceFetchResult]
     items: list[NewsItem]
+    stats: SummarizationStats = SummarizationStats(summarization_mode="textrank")
