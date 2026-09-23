@@ -1,8 +1,10 @@
-"""Golden parity: no-LLM graph path matches TextRank composition (FB-1 baseline)."""
+"""Golden parity: plain run_pipeline matches optional LangGraph adapter (and TextRank composition)."""
 
 from __future__ import annotations
 
 from datetime import datetime, timezone
+
+import pytest
 
 from news_pipeline.fetch import fetch_source
 from news_pipeline.freshness import filter_items_by_window
@@ -10,6 +12,10 @@ from news_pipeline.identity import compute_item_id, dedupe_by_id
 from news_pipeline.models import NewsSource
 from news_pipeline.pipeline import run_pipeline
 from news_pipeline.summarize import summarize_item
+
+pytest.importorskip("langgraph")
+
+from news_pipeline.graph import invoke_pipeline  # noqa: E402
 
 NOW = datetime(2026, 8, 16, 12, 0, 0, tzinfo=timezone.utc)
 
@@ -37,7 +43,7 @@ FIXTURE_RSS = f"""<?xml version="1.0"?>
     <title>Old Story</title>
     <link>https://example.test/old</link>
     <description>Ancient history filtered by freshness window.</description>
-    <pubDate>Mon, 01 Jul 2026 08:00:00 GMT</pubDate>
+    <pubDate>Mon, 01 Jun 2026 08:00:00 GMT</pubDate>
   </item>
 </channel></rss>
 """
@@ -61,7 +67,7 @@ def _compose_textrank(sources: list[NewsSource], *, window_hours: int, max_summa
     return source_results, summarized
 
 
-def test_no_llm_graph_matches_textrank_composition():
+def test_plain_pipeline_matches_textrank_composition():
     source = NewsSource(
         source_id="test_feed",
         url="https://example.test/test_feed/rss",
@@ -104,3 +110,34 @@ def test_no_llm_graph_matches_textrank_composition():
         assert got.url == DUP_URL
         assert got.published_at == expected.published_at
         assert got.summary == expected.summary
+
+
+def test_graph_adapter_matches_plain_pipeline():
+    source = NewsSource(
+        source_id="test_feed",
+        url="https://example.test/test_feed/rss",
+        kind="rss",
+    )
+    kwargs = dict(
+        window_hours=72,
+        max_summary_chars=200,
+        fetch_text=lambda _url: FIXTURE_RSS,
+        clock=lambda: NOW,
+    )
+    plain = run_pipeline([source], **kwargs)
+    graph = invoke_pipeline(
+        [source],
+        window_hours=kwargs["window_hours"],
+        max_summary_chars=kwargs["max_summary_chars"],
+        fetch_text=kwargs["fetch_text"],
+        clock=kwargs["clock"],
+    )
+
+    assert plain.stats == graph.stats
+    assert plain.items == graph.items
+    assert len(plain.source_results) == len(graph.source_results)
+    for a, b in zip(plain.source_results, graph.source_results, strict=True):
+        assert a.source_id == b.source_id
+        assert a.ok == b.ok
+        assert a.item_count == b.item_count
+        assert a.error == b.error

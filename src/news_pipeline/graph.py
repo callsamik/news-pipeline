@@ -1,7 +1,10 @@
-"""LangGraph orchestration for the complete news-pipeline workflow.
+"""Optional LangGraph adapter for the news-pipeline workflow.
 
-LangGraph owns flow (when/where). Domain modules own meaning/mechanics.
-PipelineState must never contain AIN investment concepts.
+Install with ``pip install news-pipeline[graph]``. Domain modules own meaning;
+this module only owns flow. PipelineState must never contain AIN investment concepts.
+
+Temporary implementation detail — not a supported public extension point.
+Prefer ``news_pipeline.run_pipeline`` (plain Python) for collectors.
 """
 
 from __future__ import annotations
@@ -10,7 +13,6 @@ from datetime import datetime, timezone
 from typing import Any, Callable, Literal, TypedDict
 
 import httpx
-from langgraph.graph import END, START, StateGraph
 
 from news_pipeline.fetch import ClockFn, FetchTextFn, fetch_source
 from news_pipeline.freshness import filter_items_by_window
@@ -28,7 +30,16 @@ from news_pipeline.models import (
     SummarizationConfig,
     SummarizationStats,
 )
+from news_pipeline.pipeline import _llm_enabled
 from news_pipeline.store import NewsStore
+
+try:
+    from langgraph.graph import END, START, StateGraph
+except ImportError as exc:  # pragma: no cover - exercised when [graph] missing
+    raise ImportError(
+        "news_pipeline.graph requires LangGraph. "
+        "Install with: pip install 'news-pipeline[graph]'"
+    ) from exc
 
 
 class PipelineState(TypedDict, total=False):
@@ -55,17 +66,6 @@ class PipelineState(TypedDict, total=False):
     llm_latency_ms: float
 
 
-def _llm_enabled(
-    llm_client: LLMClient | None,
-    summarization: SummarizationConfig | None,
-) -> bool:
-    if llm_client is None:
-        return False
-    if summarization is None:
-        return True
-    return bool(summarization.enabled)
-
-
 def build_pipeline_graph(
     *,
     fetch_text: FetchTextFn | None = None,
@@ -75,7 +75,7 @@ def build_pipeline_graph(
     llm_client: LLMClient | None = None,
     summarization: SummarizationConfig | None = None,
 ) -> Any:
-    """Compile the news-pipeline StateGraph with thin nodes over domain modules."""
+    """Compile the optional StateGraph with thin nodes over domain modules."""
 
     now_fn: Callable[[], datetime] = clock or (lambda: datetime.now(timezone.utc))
     cfg = summarization or SummarizationConfig(enabled=False)
@@ -143,7 +143,6 @@ def build_pipeline_graph(
         }
 
     def persist(state: PipelineState) -> dict[str, Any]:
-        # Graph decides whether; store.py owns serialization/mechanics.
         if store is not None:
             store.upsert_items(state.get("items") or [])
         return {"completed_at": now_fn()}
@@ -189,7 +188,7 @@ def invoke_pipeline(
     llm_client: LLMClient | None = None,
     summarization: SummarizationConfig | None = None,
 ) -> PipelineRunResult:
-    """Execute the compiled pipeline graph and build PipelineRunResult."""
+    """Execute the optional compiled pipeline graph (parity with ``run_pipeline``)."""
     now_fn: Callable[[], datetime] = clock or (lambda: datetime.now(timezone.utc))
     started_at = now_fn()
 

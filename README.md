@@ -2,7 +2,7 @@
 
 Generic news fetch → parse → identity dedupe → freshness window → summarize → optional persist.
 
-Orchestration is **LangGraph**. Domain modules remain authoritative for what each step means.
+**Default orchestration is plain Python.** LangGraph is an **optional** adapter (`news-pipeline[graph]`) with parity to the plain path. Domain modules remain authoritative for what each step means.
 
 **Import:** `news_pipeline`  
 **Status:** Public alpha (`0.1.0a1`) — **library freeze candidate** after FB-1
@@ -11,7 +11,8 @@ Orchestration is **LangGraph**. Domain modules remain authoritative for what eac
 
 | Layer | Owns |
 | :--- | :--- |
-| **LangGraph** | Flow — when/where steps run |
+| **`run_pipeline` (plain Python)** | Required collector flow — when/where steps run |
+| **`news_pipeline.graph` (optional)** | LangGraph StateGraph adapter — install `[graph]`; not a public extension point |
 | **Domain modules** | Meaning/mechanics — fetch, identity, **TextRank** summarize, store |
 | **`LLMClient` Protocol** → **multiprovider-llm** | Model access (optional) |
 | **AIN / consumer** | Linking, impact, mentions, gates, digests — never imported here |
@@ -19,10 +20,10 @@ Orchestration is **LangGraph**. Domain modules remain authoritative for what eac
 ```text
 Consumer / AIN
      │ configures multiprovider-llm
-     │ calls run_pipeline(llm_client=...)
+     │ calls run_pipeline(llm_client=...)   ← plain Python (required)
+     │ optional: news_pipeline.graph        ← only with [graph]
      ▼
-LangGraph pipeline
-  fetch → dedupe → freshness → summarize? → persist?
+fetch → dedupe → freshness → summarize? → persist?
                               /        \
                        TextRank      LLM batch
                        (sole det.)       ↓
@@ -31,9 +32,9 @@ LangGraph pipeline
                                     attach  TextRank fallback
 ```
 
-**One sentence:** `news-pipeline` uses an LLM for primary summarization when configured; otherwise, or whenever the LLM batch fails validation, it uses its single deterministic TextRank summarizer as the safety fallback, with LangGraph controlling the workflow and AIN remaining entirely outside the library.
+**One sentence:** `news-pipeline` uses an LLM for primary summarization when configured; otherwise, or whenever the LLM batch fails validation, it uses its single deterministic TextRank summarizer as the safety fallback. LangGraph is optional orchestration for AIN/subgraph use; AIN remains entirely outside the library.
 
-**Hard firewall:** graph state and `NewsItem` never carry ticker/asset/catalog/impact/mention semantics.
+**Hard firewall:** pipeline state and `NewsItem` never carry ticker/asset/catalog/impact/mention semantics.
 
 ## Owns / Consumes / Produces / Extends
 
@@ -97,7 +98,7 @@ Golden vectors are tested in `tests/test_identity.py`. Batch dedupe within a run
 
 ## Optional persistence
 
-Pass a `NewsStore` (e.g. `SqliteNewsStore(path)`) to `run_pipeline` to upsert summarized items. The graph decides *whether* to persist; `store.py` owns *how*.
+Pass a `NewsStore` (e.g. `SqliteNewsStore(path)`) to `run_pipeline` to upsert summarized items. The orchestrator decides *whether* to persist; `store.py` owns *how*.
 
 ## Standalone example (no AIN)
 
@@ -111,12 +112,13 @@ python examples/minimal_pipeline.py
 - Python `>=3.11,<4`
 - `httpx>=0.27,<1`
 - `feedparser>=6.0,<7`
-- `langgraph>=1.0,<2`
+- Optional: `langgraph>=1.0,<2` via `pip install "news-pipeline[graph]"`
 
 ## Install
 
 ```bash
-pip install -e ".[dev]"
+pip install -e ".[dev]"          # includes langgraph for parity tests
+pip install -e ".[graph]"        # optional StateGraph adapter only
 ```
 
 ## Development
@@ -144,6 +146,8 @@ from news_pipeline import (
     fetch_source,
     SqliteNewsStore,
 )
+# Optional (requires news-pipeline[graph]):
+# from news_pipeline.graph import invoke_pipeline, build_pipeline_graph
 ```
 
 ## Evidence gates
@@ -162,13 +166,14 @@ from news_pipeline import (
 | Gate | Status |
 | :--- | :--- |
 | `OV-NP-LLM-SUMMARIZE-3` | **ACCEPTED** — DeepSeek-R1:14B satisfies the frozen batch/no-ID contract |
-| `OV-NP-LLM-API-1` | **PASS** — real multiprovider-llm → `run_pipeline` → LangGraph seam |
+| `OV-NP-LLM-API-1` | **PASS** — real multiprovider-llm → `run_pipeline` (plain; graph optional) |
 | `OV-NP-DETERMINISTIC-FB-1` | **PASS** — TextRank sole deterministic / LLM fallback (see artifact) |
 
 ```text
 LLM                         PRIMARY
 TextRank                    SOLE DETERMINISTIC SUMMARIZER / FALLBACK
-LangGraph                   ORCHESTRATION ONLY
+plain run_pipeline          REQUIRED ORCHESTRATION
+LangGraph                   OPTIONAL ADAPTER ([graph] extra)
 multiprovider-llm           MODEL/PROVIDER ACCESS ONLY
 AIN                         INVESTMENT INTELLIGENCE ONLY (unchanged; cutover separate)
 ────────────────────────────────────

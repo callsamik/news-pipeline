@@ -28,3 +28,13 @@ htmlcov/
 
 .superpowers/
 examples/artifacts/
+
+# Hermes vault local link (machine-specific paths + packets)
+.hermes-vault.json
+HERMES_CONTEXT.md
+.cursor/HERMES_CONTEXT.md
+.hermes-outbox/processed/
+.hermes-outbox/failed/
+.hermes-outbox/*.md
+!.hermes-outbox/README.md
+!.hermes-outbox/EXAMPLE.packet.md
