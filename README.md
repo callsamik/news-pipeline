@@ -11,11 +11,27 @@ Generic news fetch → parse → identity dedupe → freshness window → summar
 
 | Layer | Owns |
 | :--- | :--- |
-| **`run_pipeline` (plain Python)** | Required collector flow — when/where steps run |
-| **`news_pipeline.graph` (optional)** | LangGraph StateGraph adapter — install `[graph]`; not a public extension point |
+| **`run_pipeline` (plain Python)** | Required collector flow — stable public orchestration |
+| **`news_pipeline.graph` (optional)** | Unstable LangGraph adapter — install `[graph]`; parity with plain path; not a public extension point |
 | **Domain modules** | Meaning/mechanics — fetch, identity, **TextRank** summarize, store |
-| **`LLMClient` Protocol** → **multiprovider-llm** | Model access (optional) |
+| **`LLMClient` Protocol** → **multiprovider-llm** | Model access (optional; external package) |
 | **AIN / consumer** | Linking, impact, mentions, gates, digests — never imported here |
+
+### Optional graph adapter contract
+
+`invoke_pipeline` / `build_pipeline_graph` (behind `[graph]`):
+
+- accept the same request as plain `run_pipeline`
+- return the same domain result semantics for the same input/config
+- do **not** expose `PipelineState` as public API
+- do **not** alter identity, freshness, or persistence semantics
+- may change node layout internally, but must stay **behaviorally equivalent** to the plain path (parity tests)
+
+Core package import must never load LangGraph. Without the extra:
+
+```python
+import news_pipeline.graph  # ImportError → pip install news-pipeline[graph]
+```
 
 ```text
 Consumer / AIN

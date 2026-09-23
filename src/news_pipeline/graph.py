@@ -3,8 +3,18 @@
 Install with ``pip install news-pipeline[graph]``. Domain modules own meaning;
 this module only owns flow. PipelineState must never contain AIN investment concepts.
 
-Temporary implementation detail — not a supported public extension point.
-Prefer ``news_pipeline.run_pipeline`` (plain Python) for collectors.
+**Temporary / unstable** — not a supported public extension point. Prefer
+``news_pipeline.run_pipeline`` (plain Python) for collectors.
+
+Minimum adapter promise (parity contract):
+
+- accepts the same request shape as plain ``run_pipeline``
+- returns the same ``PipelineRunResult`` semantics for the same inputs/config
+- does **not** expose ``PipelineState`` as public API
+- does **not** alter identity, freshness, or persistence semantics
+
+The adapter may change node layout internally; for the same input and
+configuration it must remain behaviorally equivalent to the plain path.
 """
 
 from __future__ import annotations
@@ -37,7 +47,7 @@ try:
     from langgraph.graph import END, START, StateGraph
 except ImportError as exc:  # pragma: no cover - exercised when [graph] missing
     raise ImportError(
-        "news_pipeline.graph requires LangGraph. "
+        "news_pipeline.graph requires the optional 'graph' extra. "
         "Install with: pip install 'news-pipeline[graph]'"
     ) from exc
 

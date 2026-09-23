@@ -15,14 +15,14 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Production LLM access: install multiprovider-llm separately (implements LLMClient).
-#   pip install "git+https://github.com/callsamik/multiprovider-llm.git"
-llm = []
 # Optional StateGraph adapter (parity with plain run_pipeline):
 #   pip install "news-pipeline[graph]"
+# LLM access stays external (implements LLMClient Protocol), e.g.:
+#   pip install "git+https://github.com/callsamik/multiprovider-llm.git"
 graph = [
   "langgraph>=1.0,<2",
 ]
+# LangGraph listed directly (do not self-reference news-pipeline[graph]).
 dev = [
   "pytest>=8.0",
   "respx>=0.21",
